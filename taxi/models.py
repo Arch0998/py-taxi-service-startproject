@@ -7,7 +7,7 @@ class Manufacturer(models.Model):
     country = models.CharField(max_length=255)
 
     def __str__(self) -> str:
-        return f"name: {self.name}, country: {self.country}"
+        return self.name
 
 
 class Car(models.Model):
@@ -21,6 +21,10 @@ class Car(models.Model):
 
 class Driver(AbstractUser):
     license_number = models.CharField(max_length=255, unique=True)
+
+    class Meta:
+        verbose_name = "Driver"
+        verbose_name_plural = "Drivers"
 
     def __str__(self) -> str:
         return (
